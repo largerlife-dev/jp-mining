@@ -7,7 +7,7 @@ jp-mining is a mining script for RedM, made for RSG-Core and has more features a
 - 3 Different reward categories
 - Wash rocks at any river and water area, to get the rewards
 - Easy config file for modification
-- 
+
 ```
 CONFIG = {}
 
