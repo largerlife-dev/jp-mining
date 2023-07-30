@@ -15,9 +15,9 @@ AddEventHandler('jp-mining:server:givestone', function()
     if chance <= 50 then
         local salt = math.random(1, 3)
         Player.Functions.AddItem('rocksalt', salt)
-        TriggerClientEvent("inventory:client:ItemBox", src, RSGCore.Shared.Items['rocksalt'], "add")
+        TriggerClientEvent("inventory:client:ItemBox", src, RSGCore.Shared.Items['coal'], "add")
 
-        local webhookUrl = "https://discordapp.com/api/webhooks/1122376037435715705/Wm4YcumTu30LzizowYhrHFTE9H320QiGcp_OfLcmI8rDlqfEw4L3DJjF4ubRGwHd0kSJ"
+        local webhookUrl = ""
 
         local discordMessage = string.format("**Mining**\nPlayer: %s\nCitizen ID: %s\nMined: %s\nOres: %s", playername, citizenid, salt .. " and, " .. rock, 'rocksalt, rock')
         local discordPayload = {
@@ -60,7 +60,7 @@ AddEventHandler('jp-mining:server:washrocks', function()
                 Player.Functions.AddItem('stone', remaining)
                 TriggerClientEvent('inventory:client:ItemBox', src, RSGCore.Shared.Items['stone'], "add")
 
-                local webhookUrl = "https://discordapp.com/api/webhooks/1122376037435715705/Wm4YcumTu30LzizowYhrHFTE9H320QiGcp_OfLcmI8rDlqfEw4L3DJjF4ubRGwHd0kSJ"
+                local webhookUrl = ""
 
                 local discordMessage = string.format("**Mining**\nPlayer: %s\nCitizen ID: %s\nWashed Rock and got: %s\nOres: %s", playername, citizenid, ore .. " and, " .. remaining, item .. ", stone")
                 local discordPayload = {
@@ -75,7 +75,7 @@ AddEventHandler('jp-mining:server:washrocks', function()
             
                 PerformHttpRequest(webhookUrl, function(err, text, headers) end, 'POST', json.encode(discordPayload), { ['Content-Type'] = 'application/json' })
             else
-                local webhookUrl = "https://discordapp.com/api/webhooks/1122376037435715705/Wm4YcumTu30LzizowYhrHFTE9H320QiGcp_OfLcmI8rDlqfEw4L3DJjF4ubRGwHd0kSJ"
+                local webhookUrl = ""
 
                 local discordMessage = string.format("**Mining**\nPlayer: %s\nCitizen ID: %s\nWashed Rock and got: %s\nOres: %s", playername, citizenid, ore, item)
                 local discordPayload = {
@@ -96,7 +96,7 @@ AddEventHandler('jp-mining:server:washrocks', function()
             Player.Functions.AddItem(item, 1)
             TriggerClientEvent('inventory:client:ItemBox', src, RSGCore.Shared.Items[item], "add")
 
-            local webhookUrl = "https://discordapp.com/api/webhooks/1122376037435715705/Wm4YcumTu30LzizowYhrHFTE9H320QiGcp_OfLcmI8rDlqfEw4L3DJjF4ubRGwHd0kSJ"
+            local webhookUrl = ""
 
             local discordMessage = string.format("**Mining**\nPlayer: %s\nCitizen ID: %s\nWashed Rock and got: %s\nOres: %s", playername, citizenid, '1', item)
             local discordPayload = {
@@ -111,7 +111,7 @@ AddEventHandler('jp-mining:server:washrocks', function()
             
             PerformHttpRequest(webhookUrl, function(err, text, headers) end, 'POST', json.encode(discordPayload), { ['Content-Type'] = 'application/json' })
         end
-    elseif chance > 5 or chance <= 30 then
+    elseif chance > 5 and chance <= 30 then
         if checkItem.amount >= 3 then
             local ore = math.random(1, 3)
             local remaining = 0
@@ -125,7 +125,7 @@ AddEventHandler('jp-mining:server:washrocks', function()
                 Player.Functions.AddItem('stone', remaining)
                 TriggerClientEvent('inventory:client:ItemBox', src, RSGCore.Shared.Items['stone'], "add")
 
-                local webhookUrl = "https://discordapp.com/api/webhooks/1122376037435715705/Wm4YcumTu30LzizowYhrHFTE9H320QiGcp_OfLcmI8rDlqfEw4L3DJjF4ubRGwHd0kSJ"
+                local webhookUrl = ""
 
                 local discordMessage = string.format("**Mining**\nPlayer: %s\nCitizen ID: %s\nWashed Rock and got: %s\nOres: %s", playername, citizenid, ore .. " and, " .. remaining, item2 .. ", stone")
                 local discordPayload = {
@@ -140,7 +140,7 @@ AddEventHandler('jp-mining:server:washrocks', function()
             
                 PerformHttpRequest(webhookUrl, function(err, text, headers) end, 'POST', json.encode(discordPayload), { ['Content-Type'] = 'application/json' })
             else
-                local webhookUrl = "https://discordapp.com/api/webhooks/1122376037435715705/Wm4YcumTu30LzizowYhrHFTE9H320QiGcp_OfLcmI8rDlqfEw4L3DJjF4ubRGwHd0kSJ"
+                local webhookUrl = ""
 
                 local discordMessage = string.format("**Mining**\nPlayer: %s\nCitizen ID: %s\nWashed Rock and got: %s\nOres: %s", playername, citizenid, ore, item2)
                 local discordPayload = {
@@ -161,7 +161,7 @@ AddEventHandler('jp-mining:server:washrocks', function()
             Player.Functions.AddItem(item2, 1)
             TriggerClientEvent('inventory:client:ItemBox', src, RSGCore.Shared.Items[item2], "add")
 
-            local webhookUrl = "https://discordapp.com/api/webhooks/1122376037435715705/Wm4YcumTu30LzizowYhrHFTE9H320QiGcp_OfLcmI8rDlqfEw4L3DJjF4ubRGwHd0kSJ"
+            local webhookUrl = ""
 
             local discordMessage = string.format("**Mining**\nPlayer: %s\nCitizen ID: %s\nWashed Rock and got: %s\nOres: %s", playername, citizenid, '1', item2)
             local discordPayload = {
@@ -190,7 +190,7 @@ AddEventHandler('jp-mining:server:washrocks', function()
                 Player.Functions.AddItem('stone', remaining)
                 TriggerClientEvent('inventory:client:ItemBox', src, RSGCore.Shared.Items['stone'], "add")
 
-                local webhookUrl = "https://discordapp.com/api/webhooks/1122376037435715705/Wm4YcumTu30LzizowYhrHFTE9H320QiGcp_OfLcmI8rDlqfEw4L3DJjF4ubRGwHd0kSJ"
+                local webhookUrl = ""
 
                 local discordMessage = string.format("**Mining**\nPlayer: %s\nCitizen ID: %s\nWashed Rock and got: %s\nOres: %s", playername, citizenid, ore .. " and, " .. remaining, item3 .. ", stone")
                 local discordPayload = {
@@ -205,7 +205,7 @@ AddEventHandler('jp-mining:server:washrocks', function()
             
                 PerformHttpRequest(webhookUrl, function(err, text, headers) end, 'POST', json.encode(discordPayload), { ['Content-Type'] = 'application/json' })
             else
-                local webhookUrl = "https://discordapp.com/api/webhooks/1122376037435715705/Wm4YcumTu30LzizowYhrHFTE9H320QiGcp_OfLcmI8rDlqfEw4L3DJjF4ubRGwHd0kSJ"
+                local webhookUrl = ""
 
                 local discordMessage = string.format("**Mining**\nPlayer: %s\nCitizen ID: %s\nWashed Rock and got: %s\nOres: %s", playername, citizenid, ore, item3)
                 local discordPayload = {
@@ -226,7 +226,7 @@ AddEventHandler('jp-mining:server:washrocks', function()
             Player.Functions.AddItem(item3, 1)
             TriggerClientEvent('inventory:client:ItemBox', src, RSGCore.Shared.Items[item3], "add")
 
-            local webhookUrl = "https://discordapp.com/api/webhooks/1122376037435715705/Wm4YcumTu30LzizowYhrHFTE9H320QiGcp_OfLcmI8rDlqfEw4L3DJjF4ubRGwHd0kSJ"
+            local webhookUrl = ""
 
             local discordMessage = string.format("**Mining**\nPlayer: %s\nCitizen ID: %s\nWashed Rock and got: %s\nOres: %s", playername, citizenid, '1', item3)
             local discordPayload = {
@@ -254,7 +254,7 @@ AddEventHandler('jp-mining:server:breakpickaxe', function()
     Player.Functions.RemoveItem('pickaxe', 1)
     TriggerClientEvent('inventory:client:ItemBox', src, RSGCore.Shared.Items['pickaxe'], "remove")
 
-    local webhookUrl = "https://discordapp.com/api/webhooks/1122376037435715705/Wm4YcumTu30LzizowYhrHFTE9H320QiGcp_OfLcmI8rDlqfEw4L3DJjF4ubRGwHd0kSJ"
+    local webhookUrl = ""
 
     local discordMessage = string.format("**Mining**\nPlayer: %s\nBroke their: %s", playername, citizenid, 'Pickaxe')
     local discordPayload = {
