@@ -6,20 +6,23 @@ CONFIG.RareAward = {
     'emerald',
     'mediumnugget',
     'smallnugget',
-    'largenugget'
+    'largenugget',
+    'silver'
 }
 
 CONFIG.UncommonAward = {
-    'silver',
-    'nitrate'
+    'sand',
+    'unrefined_steel',
+    'rocksalt', 
+    'copper'
 }
 
 CONFIG.Normal = {
-    'rocksalt',
-    'iron',
+    'ironore',
     'coal',
-    'aluminum',
-    'copper',
+    'aluminum',    
+    'nitrate',    
+    'lead'
 }
 
 CONFIG.MiningLocations = {
@@ -75,6 +78,24 @@ CONFIG.MiningLocations = {
         name = 'Mining',
         location = 'mining-9',
         coords = vector3(825.7395, 1922.6685, 259.20452),
+        showblip = true
+    },
+    {
+        name = 'Mining',
+        location = 'mining-10',
+        coords = vector3(-2368.589, 116.15166, 216.80157),
+        showblip = true
+    },
+    {
+        name = 'Mining',
+        location = 'mining-11',
+        coords = vector3(-2368.386, 110.90789, 216.90011),
+        showblip = true
+    },
+    {
+        name = 'Mining',
+        location = 'mining-12',
+        coords = vector3(-2336.721, 107.43684, 222.77828),
         showblip = true
     },
 }
