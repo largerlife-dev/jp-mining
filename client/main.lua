@@ -19,9 +19,9 @@ Citizen.CreateThread(function()
     for _, mining in pairs(CONFIG.MiningLocations) do
         exports['rsg-core']:createPrompt(mining.location, mining.coords, RSGCore.Shared.Keybinds['E'],
             'Start ' .. mining.name, {
-            type = 'client',
-            event = 'jp-mining:client:StartMining'
-        })
+                type = 'client',
+                event = 'jp-mining:client:StartMining'
+            })
         if mining.showblip == true then
             local MiningBlip = Citizen.InvokeNative(0x554D9D53F696D002, 1664425300, mining.coords)
             SetBlipSprite(MiningBlip, 1220803671)
@@ -86,10 +86,10 @@ RegisterNetEvent('jp-mining:client:StartMining', function()
                 isMining = false
             end
         else
-            lib.notify({ title = 'Error', 'You don\'t have a pickaxe!', type = 'error', duration = 5000 })
+            lib.notify({ title = 'Error', description = 'You don\'t have a pickaxe!', type = 'error', duration = 5000 })
         end
     else
-        lib.notify({ title = 'Error', 'You are already doing something!', type = 'warning', duration = 5000 })
+        lib.notify({ title = 'Error', description = 'You are already doing something!', type = 'warning', duration = 5000 })
     end
 end)
 
