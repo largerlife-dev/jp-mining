@@ -17,14 +17,15 @@ end
 
 Citizen.CreateThread(function()
     for _, mining in pairs(CONFIG.MiningLocations) do
-        exports['rsg-core']:createPrompt(mining.location, mining.coords, RSGCore.Shared.Keybinds['E'], 'Start ' .. mining.name, {
+        exports['rsg-core']:createPrompt(mining.location, mining.coords, RSGCore.Shared.Keybinds['E'],
+            'Start ' .. mining.name, {
             type = 'client',
             event = 'jp-mining:client:StartMining'
         })
         if mining.showblip == true then
             local MiningBlip = Citizen.InvokeNative(0x554D9D53F696D002, 1664425300, mining.coords)
             SetBlipSprite(MiningBlip, 1220803671)
-            SetBlipScale(MiningBlip)
+            SetBlipScale(MiningBlip, 1.0)
             Citizen.InvokeNative(0x9CB1A1623062F402, MiningBlip, mining.name)
         end
     end
@@ -34,7 +35,7 @@ RegisterNetEvent('jp-mining:client:StartMining', function()
     local player = PlayerPedId()
     local hasItem = RSGCore.Functions.HasItem('pickaxe', 1)
     local chance = math.random(1, 100)
-    
+
     if isMining == false then
         if hasItem then
             local numberGenerator = math.random(1, 100)
@@ -43,40 +44,52 @@ RegisterNetEvent('jp-mining:client:StartMining', function()
             else
                 local coords = GetEntityCoords(player)
                 local boneIndex = GetEntityBoneIndexByName(player, "SKEL_R_Finger00")
-                local pickaxe = CreateObject(GetHashKey("p_pickaxe01x"), coords, true, true, true)
+                local pickaxe = CreateObject(GetHashKey("p_pickaxe01x"), coords.x, coords.y, coords.z, true, true, false)
                 isMining = true
 
                 SetCurrentPedWeapon(player, "WEAPON_UNARMED", true)
                 FreezeEntityPosition(player, true)
                 ClearPedTasksImmediately(player)
-                AttachEntityToEntity(pickaxe, player, boneIndex, -0.35, -0.21, -0.39, -8.0, 47.0, 11.0, true, false, true, false, 0, true)
+                AttachEntityToEntity(pickaxe, player, boneIndex, -0.35, -0.21, -0.39, -8.0, 47.0, 11.0, true, false, true,
+                    false, 0, true)
 
                 TriggerEvent('jp-mining:client:MineAnimation')
 
-                RSGCore.Functions.Progressbar("mining", "Mining...", 30000, false, true,
-                {
-                    disableMovement = true,
-                    disableCarMovement = true,
-                    disableMouse = false,
-                    disableCombat = true,
-                }, {}, {}, {}, function()
-                    ClearPedTasksImmediately(player)
-                    FreezeEntityPosition(player, false)
+                lib.progressBar({
+                    duration = CONFIG.MiningDuration,
+                    position = 'bottom',
+                    useWhileDead = false,
+                    canCancel = false,
+                    disableControl = true,
+                    disable = {
+                        move = true,
+                        car = true,
+                        mouse = true,
+                        combat = true,
+                    },
+                    anim = {
+                        dict = mineAnimation,
+                        clip = 'base',
+                        flag = 1,
+                    },
+                    label = 'Mining...',
+                })
+                ClearPedTasksImmediately(player)
+                FreezeEntityPosition(player, false)
 
-                    TriggerServerEvent('jp-mining:server:givestone')
+                TriggerServerEvent('jp-mining:server:givestone')
 
-                    SetEntityAsNoLongerNeeded(pickaxe)
-                    DeleteEntity(pickaxe)
-                    DeleteObject(pickaxe)
+                SetEntityAsNoLongerNeeded(pickaxe)
+                DeleteEntity(pickaxe)
+                DeleteObject(pickaxe)
 
-                    isMining = false
-                end)
+                isMining = false
             end
         else
-            RSGCore.Functions.Notify('You don\'t have a pickaxe!', 'error')
+            lib.notify({ title = 'Error', 'You don\'t have a pickaxe!', type = 'error', duration = 5000 })
         end
     else
-        RSGCore.Functions.Notify('You are already doing something!', 'primary')
+        lib.notify({ title = 'Error', 'You are already doing something!', type = 'warning', duration = 5000 })
     end
 end)
 

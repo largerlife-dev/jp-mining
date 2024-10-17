@@ -1,5 +1,7 @@
 CONFIG = {}
 
+CONFIG.MiningDuration = 30000
+
 CONFIG.RareAward = {
     'diamond',
     'ruby',

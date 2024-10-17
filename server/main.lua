@@ -10,12 +10,12 @@ AddEventHandler('jp-mining:server:givestone', function()
     local citizenid = Player.PlayerData.citizenid
 
     Player.Functions.AddItem('rock', rock)
-    TriggerClientEvent("inventory:client:ItemBox", src, RSGCore.Shared.Items['rock'], "add")
+    TriggerClientEvent("rsg-inventory:client:ItemBox", src, RSGCore.Shared.Items['rock'], "add")
 
     if chance <= 50 then
         local salt = math.random(1, 3)
         Player.Functions.AddItem('rocksalt', salt)
-        TriggerClientEvent("inventory:client:ItemBox", src, RSGCore.Shared.Items['coal'], "add")
+        TriggerClientEvent("rsg-inventory:client:ItemBox", src, RSGCore.Shared.Items['coal'], "add")
 
         local webhookUrl = ""
 
@@ -51,14 +51,14 @@ AddEventHandler('jp-mining:server:washrocks', function()
             local ore = math.random(1, 3)
             local remaining = 0
             Player.Functions.RemoveItem('rock', 3)
-            TriggerClientEvent('inventory:client:ItemBox', src, RSGCore.Shared.Items['rock'], "remove")
+            TriggerClientEvent('rsg-inventory:client:ItemBox', src, RSGCore.Shared.Items['rock'], "remove")
             Player.Functions.AddItem(item, ore)
-            TriggerClientEvent('inventory:client:ItemBox', src, RSGCore.Shared.Items[item], "add")
+            TriggerClientEvent('rsg-inventory:client:ItemBox', src, RSGCore.Shared.Items[item], "add")
 
             if ore <= 2 then
                 remaining = 3 - ore
                 Player.Functions.AddItem('stone', remaining)
-                TriggerClientEvent('inventory:client:ItemBox', src, RSGCore.Shared.Items['stone'], "add")
+                TriggerClientEvent('rsg-inventory:client:ItemBox', src, RSGCore.Shared.Items['stone'], "add")
 
                 local webhookUrl = ""
 
@@ -92,9 +92,9 @@ AddEventHandler('jp-mining:server:washrocks', function()
             end
         elseif checkItem.amount <= 2 then
             Player.Functions.RemoveItem('rock', 1)
-            TriggerClientEvent('inventory:client:ItemBox', src, RSGCore.Shared.Items['rock'], "remove")
+            TriggerClientEvent('rsg-inventory:client:ItemBox', src, RSGCore.Shared.Items['rock'], "remove")
             Player.Functions.AddItem(item, 1)
-            TriggerClientEvent('inventory:client:ItemBox', src, RSGCore.Shared.Items[item], "add")
+            TriggerClientEvent('rsg-inventory:client:ItemBox', src, RSGCore.Shared.Items[item], "add")
 
             local webhookUrl = ""
 
@@ -116,14 +116,14 @@ AddEventHandler('jp-mining:server:washrocks', function()
             local ore = math.random(1, 3)
             local remaining = 0
             Player.Functions.RemoveItem('rock', 3)
-            TriggerClientEvent('inventory:client:ItemBox', src, RSGCore.Shared.Items['rock'], "remove")
+            TriggerClientEvent('rsg-inventory:client:ItemBox', src, RSGCore.Shared.Items['rock'], "remove")
             Player.Functions.AddItem(item2, ore)
-            TriggerClientEvent('inventory:client:ItemBox', src, RSGCore.Shared.Items[item2], "add")
+            TriggerClientEvent('rsg-inventory:client:ItemBox', src, RSGCore.Shared.Items[item2], "add")
 
             if ore <= 2 then
                 remaining = 3 - ore
                 Player.Functions.AddItem('stone', remaining)
-                TriggerClientEvent('inventory:client:ItemBox', src, RSGCore.Shared.Items['stone'], "add")
+                TriggerClientEvent('rsg-inventory:client:ItemBox', src, RSGCore.Shared.Items['stone'], "add")
 
                 local webhookUrl = ""
 
@@ -157,9 +157,9 @@ AddEventHandler('jp-mining:server:washrocks', function()
             end
         elseif checkItem.amount <= 2 then
             Player.Functions.RemoveItem('rock', 1)
-            TriggerClientEvent('inventory:client:ItemBox', src, RSGCore.Shared.Items['rock'], "remove")
+            TriggerClientEvent('rsg-inventory:client:ItemBox', src, RSGCore.Shared.Items['rock'], "remove")
             Player.Functions.AddItem(item2, 1)
-            TriggerClientEvent('inventory:client:ItemBox', src, RSGCore.Shared.Items[item2], "add")
+            TriggerClientEvent('rsg-inventory:client:ItemBox', src, RSGCore.Shared.Items[item2], "add")
 
             local webhookUrl = ""
 
@@ -181,14 +181,14 @@ AddEventHandler('jp-mining:server:washrocks', function()
             local ore = math.random(1, 3)
             local remaining = 0
             Player.Functions.RemoveItem('rock', 3)
-            TriggerClientEvent('inventory:client:ItemBox', src, RSGCore.Shared.Items['rock'], "remove")
+            TriggerClientEvent('rsg-inventory:client:ItemBox', src, RSGCore.Shared.Items['rock'], "remove")
             Player.Functions.AddItem(item3, ore)
-            TriggerClientEvent('inventory:client:ItemBox', src, RSGCore.Shared.Items[item3], "add")
+            TriggerClientEvent('rsg-inventory:client:ItemBox', src, RSGCore.Shared.Items[item3], "add")
 
             if ore <= 2 then
                 remaining = 3 - ore
                 Player.Functions.AddItem('stone', remaining)
-                TriggerClientEvent('inventory:client:ItemBox', src, RSGCore.Shared.Items['stone'], "add")
+                TriggerClientEvent('rsg-inventory:client:ItemBox', src, RSGCore.Shared.Items['stone'], "add")
 
                 local webhookUrl = ""
 
@@ -222,9 +222,9 @@ AddEventHandler('jp-mining:server:washrocks', function()
             end
         elseif checkItem.amount <= 2 then
             Player.Functions.RemoveItem('rock', 1)
-            TriggerClientEvent('inventory:client:ItemBox', src, RSGCore.Shared.Items['rock'], "remove")
+            TriggerClientEvent('rsg-inventory:client:ItemBox', src, RSGCore.Shared.Items['rock'], "remove", 1)
             Player.Functions.AddItem(item3, 1)
-            TriggerClientEvent('inventory:client:ItemBox', src, RSGCore.Shared.Items[item3], "add")
+            TriggerClientEvent('rsg-inventory:client:ItemBox', src, RSGCore.Shared.Items[item3], "add")
 
             local webhookUrl = ""
 
@@ -252,7 +252,7 @@ AddEventHandler('jp-mining:server:breakpickaxe', function()
     local citizenid = Player.PlayerData.citizenid
 
     Player.Functions.RemoveItem('pickaxe', 1)
-    TriggerClientEvent('inventory:client:ItemBox', src, RSGCore.Shared.Items['pickaxe'], "remove")
+    TriggerClientEvent('rsg-inventory:client:ItemBox', src, RSGCore.Shared.Items['pickaxe'], "remove")
 
     local webhookUrl = ""
 

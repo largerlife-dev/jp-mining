@@ -3,7 +3,7 @@ rdr3_warning 'I acknowledge that this is a prerelease build of RedM, and I am aw
 fx_version 'cerulean'
 game 'rdr3'
 
-description 'A robbery script for SynthesisRP'
+description 'A mining script for SynthesisRP'
 
 author 'Jack P'
 
@@ -13,13 +13,22 @@ escrow_ignore {
     'server/*.lua'
 }
 
-shared_script 'config.lua'
+shared_script { 
+    '@ox_lib/init.lua',
+    'config.lua' 
+}
+
 server_scripts {
     'server/*.lua'
 }
 client_scripts {
     '@menuv/menuv.lua',
     'client/*.lua'
+}
+
+dependencies {
+    'rsg-core',
+    'ox_lib',
 }
 
 lua54 'yes'
